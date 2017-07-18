@@ -12,12 +12,12 @@ props:
   >bool isPlaying
   
 methods:   
-  >load(url)
+  >load(url)   
   >play()   
   >stop()   
-  >playback()
-  >setOnEnded(callback)
-  >setOnLoaded(callback)
+  >playback()   
+  >setOnEnded(callback)   
+  >setOnLoaded(callback)   
   >setOnProgress(callback)
 
 usage:
@@ -28,7 +28,7 @@ usage:
 	player.setOnLoaded(function(p){ p.play() })
 		.setOnEnded(function(p){ console.log("Ended") })
 		.setOnProgress(function(e){ console.log(e) })
-		.load('http://test/amrplayer/test.amr');
+		.load('http://example.com/audio.amr');
 		
 	// player.stop();
 	// player.playback();
