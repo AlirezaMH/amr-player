@@ -1,31 +1,34 @@
 amr-player
 play remote amr format audio with JavaScript  
 
+License: This is a fork of "https://github.com/alex374/amr-player" and this work is dedicated to the public domain and is free for all uses, commercial or otherwise. No form of credit required.
+
 inpired by https://github.com/yxl/opencore-amr-js  
 
 -- AmrPlayer --
 
-params:   
-  >amr_url   
-  >download_success_cb (optional)   
-  >download_progress_cb (optional)   
-  
 props:   
   >bool canPlay   
   >bool isPlaying
   
 methods:   
+  >load(url)
   >play()   
-  >pause()   
-  >toggle() // play() when paused or pause() when playing   
-  >endWith(callback) // optional, fire callback with ended event
+  >stop()   
+  >playback()
+  >setOnEnded(callback)
+  >setOnLoaded(callback)
+  >setOnProgress(callback)
 
 usage:
-    <script src="xxx/amrnb.js"></script>
-    <script src="xxx/amrplayer.js"></script>
+    <script src="dir/amrnb.js"></script>
+    <script src="dir/amrplayer.js"></script>
 	  
-	var player = new AmrPlayer('http://xxx.com/xxx.amr');
-	player.endWith(function(){ console.log( xxx ) });
-	player.play();
-	// or player.pause();
-	// or player.toggle();
+	var player = new AmrPlayer();
+	player.setOnLoaded(function(p){ p.play() })
+		.setOnEnded(function(p){ console.log("Ended") })
+		.setOnProgress(function(e){ console.log(e) })
+		.load('http://test/amrplayer/test.amr');
+		
+	// player.stop();
+	// player.playback();
